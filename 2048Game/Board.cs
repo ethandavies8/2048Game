@@ -83,8 +83,8 @@ namespace _2048Game
             bool empty = true;
             while (empty)
             {
-                int row = r.Next(0, 3);
-                int col = r.Next(0, 3);
+                int row = r.Next(0, board.GetUpperBound(0));
+                int col = r.Next(0, board.GetUpperBound(0));
                 double spawnVal = r.NextDouble();
                 if (board[row, col].isEmpty())
                 {

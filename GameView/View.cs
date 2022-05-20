@@ -37,9 +37,16 @@ namespace GameView
             //prevent other key handlers from running
             e.SuppressKeyPress = true;
             e.Handled = true;
-            board.spawnTile();
-            scoreLabel.Text = "Score:" + board.getScore();
-            setBoxes();
+            if (board.isGameOver())
+                endGame();
+            else
+            {
+
+                board.spawnTile();
+                scoreLabel.Text = "Score:" + board.getScore();
+                setBoxes();
+            }
+
         }
         private void setBoxes()
         {
@@ -75,6 +82,14 @@ namespace GameView
             textBox14.BackColor = board.getColor(2, 3);
             textBox15.Text = board.getVal(3, 3);
             textBox15.BackColor = board.getColor(3, 3);
+        }
+
+        private void endGame()
+        {
+            string message = "Game Over";
+            string caption = "No More Available Moves";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.OK);
+
         }
     }
 
