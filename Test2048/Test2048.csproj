@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\2048Game\2048Game.csproj" />
-    <ProjectReference Include="..\PlayerView\PlayerView.csproj" />
   </ItemGroup>
 
 </Project>

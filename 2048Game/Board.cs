@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace _2048Game
@@ -7,11 +8,13 @@ namespace _2048Game
     public class Board
     {
         public Tile[,] board;
-        public int score = 0;
+        private int score = 0;
         private int border = 0;
+        public int gridSize;
         public Board()
         {
             board = new Tile[4, 4];
+            gridSize = 4;
             for (int i = 0; i <= board.GetUpperBound(0); i++)
             {
                 for (int j = 0; j <= board.GetUpperBound(1); j++)
@@ -23,6 +26,7 @@ namespace _2048Game
 
         public Board(int gridSize)
         {
+            this.gridSize = gridSize;
             board = new Tile[gridSize, gridSize];
             for (int i = 0; i <= board.GetUpperBound(0); i++)
             {
@@ -48,18 +52,29 @@ namespace _2048Game
             return score;
         }
 
-        public void print()
+        public String print()
         {
+            String print = "";
             for (int i = 0; i <= board.GetUpperBound(0); i++)
             {
-                String row = " ";
                 for (int j = 0; j <= board.GetUpperBound(1); j++)
                 {
-                    row += board[i, j].toString();
+                    print += board[i, j].toString() + " ";
                 }
-                Console.WriteLine(row);
+                print += "\n";
+                
             }
-            Console.WriteLine("Score: " + score);
+            return print;
+        }
+
+        public String getVal(int col, int row)
+        {
+            return board[row, col].getValue().ToString();
+        }
+
+        public Color getColor(int col, int row)
+        {
+            return board[row, col].GetColor();
         }
 
         public void spawnTile()

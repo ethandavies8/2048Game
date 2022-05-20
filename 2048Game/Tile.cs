@@ -57,6 +57,9 @@ namespace _2048Game
         {
             switch (getValue())
             {
+                case 0:
+                    color = Color.FromArgb(255, 255, 255);
+                    break;
                 case 2:
                     color = Color.FromArgb(238, 228, 218);
                     break;
