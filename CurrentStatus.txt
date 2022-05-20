@@ -1,0 +1,3 @@
+Bugs: 
+Iterative Through Up and Down, Needs to be fixed
+Allows for movement when no move is available

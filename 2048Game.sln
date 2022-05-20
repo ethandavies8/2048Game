@@ -9,6 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test2048", "Test2048\Test20
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameView", "GameView\GameView.csproj", "{884749D1-F9AC-43A5-A1DE-EEC336531B1F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bug Update Info", "Bug Update Info", "{A3C269C7-7C39-4C99-A695-CA07DC09C693}"
+	ProjectSection(SolutionItems) = preProject
+		CurrentStatus.txt = CurrentStatus.txt
+		..\..\..\Desktop\noMoves.png = ..\..\..\Desktop\noMoves.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
