@@ -14,7 +14,8 @@ namespace GameView
 {
     public partial class View : Form
     {
-        Board board;
+        private Board board;
+        private string HighScore;
         public View()
         {
             InitializeComponent();
@@ -41,13 +42,16 @@ namespace GameView
                 endGame();
             else
             {
-
                 board.spawnTile();
                 scoreLabel.Text = "Score:" + board.getScore();
-                setBoxes();
+                this.Invoke(new MethodInvoker(
+                     () => this.setBoxes()));
             }
 
         }
+        /// <summary>
+        /// needs better implementation, very taxing on the view thread
+        /// </summary>
         private void setBoxes()
         {
             textBox0.Text = board.getVal(0, 0);
@@ -87,9 +91,18 @@ namespace GameView
         private void endGame()
         {
             string message = "Game Over";
-            string caption = "No More Available Moves";
-            var result = MessageBox.Show(message, caption, MessageBoxButtons.OK);
-
+            string caption = "Would you like to try again for a higher score?";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes){
+                HighScore = board.getScore().ToString();
+                board = new Board();
+                board.spawnTile();
+                setBoxes();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 

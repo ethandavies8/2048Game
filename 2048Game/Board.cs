@@ -11,10 +11,12 @@ namespace _2048Game
         private int score = 0;
         private int border = 0;
         public int gridSize;
+        private Random random;
         public Board()
         {
             board = new Tile[4, 4];
             gridSize = 4;
+            random = new Random();
             for (int i = 0; i <= board.GetUpperBound(0); i++)
             {
                 for (int j = 0; j <= board.GetUpperBound(1); j++)
@@ -79,23 +81,23 @@ namespace _2048Game
 
         public void spawnTile()
         {
-            Random r = new Random();
             bool empty = true;
             while (empty)
             {
-                int row = r.Next(0, board.GetUpperBound(0));
-                int col = r.Next(0, board.GetUpperBound(0));
-                double spawnVal = r.NextDouble();
+                //add +1 because getUpperBound is exclusive
+                int row = random.Next(0, board.GetUpperBound(0) + 1);
+                int col = random.Next(0, board.GetUpperBound(1) + 1);
+                double spawnVal = random.NextDouble();
                 if (board[row, col].isEmpty())
                 {
                     if (spawnVal < .2)
                     {
-                        board[row, col] = new Tile(4);
+                        board[row, col].setValue(4);
                         empty = false;
                     }
                     else
                     {
-                        board[row, col] = new Tile(2);
+                        board[row, col].setValue(2);
                         empty = false;
                     }
                 }
